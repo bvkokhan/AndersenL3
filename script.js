@@ -1,14 +1,17 @@
-Array.prototype.myFilter = function (arr, func, thisArg) {
+Array.prototype.myFilter = function (func, thisArg) {
     let i,
-        length = arr.length,
+        length = this.length,
         result = [];
     for (i = 0; i < length; i++) {
-        if (func.call(thisArg, arr[i], i, arr)) {
-            result.push(arr[i]);
+        if (func.call(thisArg, this[i], i, this)) {
+            result.push(this[i]);
         }
     }
     return result;
 };
+
+
+
 
 function createDebounceFunction(func, wait, immediate = false) {
     let timeout;
